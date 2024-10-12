@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.layout.Region?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.excitinglifejx.Visual.MainActivity"
+           prefWidth="1280" prefHeight="720">
+
+  <!-- Основное содержимое с установленными размерами -->
+  <BorderPane fx:id="mainContent" prefWidth="1200" prefHeight="600">
+    <center>
+      <HBox spacing="30" style="-fx-font-size: 20;">
+
+        <!-- Левая часть: список задач и нижняя панель с круглыми кнопками -->
+        <VBox spacing="20" prefWidth="550">
+          <HBox spacing="20">
+            <Button text="□" style="-fx-font-size: 20;" />
+            <Button text="□" style="-fx-font-size: 20;" />
+            <Button text="□" style="-fx-font-size: 20;" />
+            <Button text="□" style="-fx-font-size: 20;" />
+          </HBox>
+
+          <!-- Обертка для списка задач и кнопки "+" -->
+          <StackPane>
+            <ListView fx:id="taskListView" prefHeight="500" prefWidth="500" style="-fx-font-size: 18;" />
+            <Button fx:id="addButton" text="+" style="-fx-font-size: 24; -fx-background-radius: 50%;"
+                    StackPane.alignment="BOTTOM_RIGHT" onAction="#handleAddButtonClick"/>
+          </StackPane>
+
+          <!-- Нижняя панель с круглыми кнопками -->
+          <HBox spacing="20">
+            <Button text="○" style="-fx-font-size: 20;" />
+            <Button text="○" style="-fx-font-size: 20;" />
+            <Button text="○" style="-fx-font-size: 20;" />
+            <Button text="○" style="-fx-font-size: 20;" />
+          </HBox>
+        </VBox>
+
+        <!-- Правая часть: контейнер для числа и прогресса -->
+        <VBox spacing="30" prefWidth="500">
+          <Label text="67" style="-fx-font-size: 60;" />
+          <GridPane hgap="20" vgap="20">
+            <Label text="98%" style="-fx-font-size: 20;" />
+            <ProgressBar progress="0.98" prefWidth="300" />
+
+            <Label text="36%" style="-fx-font-size: 20;" />
+            <ProgressBar progress="0.36" prefWidth="300" />
+
+            <Label text="54%" style="-fx-font-size: 20;" />
+            <ProgressBar progress="0.54" prefWidth="300" />
+
+            <Label text="66%" style="-fx-font-size: 20;" />
+            <ProgressBar progress="0.66" prefWidth="300" />
+          </GridPane>
+        </VBox>
+      </HBox>
+    </center>
+  </BorderPane>
+
+  <!-- Полупрозрачный фон для блокировки взаимодействия с задним интерфейсом -->
+  <VBox fx:id="overlay" spacing="10" alignment="CENTER"
+        style="-fx-background-color: rgba(0, 0, 0, 0.3); -fx-border-color: black; -fx-padding: 20; -fx-background-radius: 10;"
+        StackPane.alignment="CENTER" visible="false" prefWidth="1280" prefHeight="720">
+  </VBox>
+
+  <!-- Встроенное всплывающее окно -->
+  <VBox fx:id="popupContainer" spacing="10" alignment="CENTER"
+        style="-fx-background-color: white; -fx-border-color: black; -fx-padding: 20; -fx-background-radius: 10; -fx-max-width: 400; -fx-max-height: 350;"
+        StackPane.alignment="CENTER" visible="false">
+
+    <Label text="Новая задача" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+
+    <!-- Поле ввода для названия -->
+    <Label text="Название" style="-fx-font-size: 16;" />
+    <TextField fx:id="titleField" promptText="Введите название" prefWidth="300" />
+
+    <!-- Поле ввода для описания -->
+    <Label text="Описание" style="-fx-font-size: 16;" />
+    <TextArea fx:id="descriptionField" promptText="Введите описание" prefRowCount="4" prefWidth="300" prefHeight="150" />
+
+    <!-- Кнопки Добавить и Отмена, выровненные горизонтально -->
+    <HBox spacing="10" alignment="CENTER">
+      <Button fx:id="addButton" text="Пополнить"  prefWidth="100" />
+      <Button fx:id="closeButton"  text="Ухайдохать" prefWidth="100" />
+    </HBox>
+
+  </VBox>
+</StackPane>
+
